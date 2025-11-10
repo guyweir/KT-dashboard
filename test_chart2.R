@@ -81,7 +81,7 @@ cht_series_sub <- lapply(seq_along(cht_data_sub), function(i) {
 
 
 plot <- highchart() %>% 
-  hc_chart(type = "column", spacingRight = 100) %>%
+  hc_chart(type = "column", spacingRight = 80) %>%
   
   hc_xAxis(categories = df$`Cohort years`,
            title = list(text = "")
