@@ -1,0 +1,1567 @@
+/* Overall Font-Sizing */
+html {
+    font-size: calc(15px + 0.390625vw);
+}
+
+body {
+  font-size: 1rem;
+}
+
+/* Fonts */
+@font-face {
+  font-family: 'LTUnivers 330 BasicLight';
+  src: url('Linotype - LTUnivers 330 BasicLight.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Linotype Univers 530 Medium';
+  src: url('Linotype - Linotype Univers 530 Medium.ttf') format('truetype');
+}
+
+* {
+  font-family: 'LTUnivers 330 BasicLight';
+}
+
+/* Overall Structure of App */
+
+/* Content Wrapper */
+.content-wrapper{
+  height: 100% !important;
+}
+
+.wrapper{
+  background-color: rgb(236, 240, 245) !important;
+}
+
+/* Feedback survey box */
+#survey_box{
+  background-color: #F39214;
+  font-size: 0.8rem;
+  padding-left: 10px;
+}
+
+#survey_box > span{
+  font-family: "Linotype Univers 530 Medium";
+}
+
+/* Dashboard Section */
+section#dbbody{
+  width: 1160px;
+  /*width: 95%;*/
+}
+
+/* Dashboard Header Row */
+#dbheader-row{
+  min-height: 5%;
+  padding-top: 20px;
+  padding-bottom: 0px;
+}
+
+/* Selector Row */
+#selector-row{
+  height: 20%;
+}
+
+/* Content Row */
+#content_row{
+  height: 70%;
+}
+
+
+.box {
+  box-shadow: none;!important
+}
+
+
+
+
+/* Dashboard Header Row Styling */
+
+/* Divs inside Dashboard Header Row */
+#dbheader-row div{
+  height: 100%;
+  vertical-align: middle;
+}
+
+/* Dashboard Header Split Layout */
+
+#dbheader-split_layout > div{
+  display: inline-block;
+}
+
+/* Dashboard Header THF Logo */
+#dbheader-logo{
+  vertical-align: middle;
+}
+
+/* Dashboard Header Icon */
+#dbheader-icon{
+  vertical-align: middle;
+}
+
+/* Dashboard Header Text*/
+#dbheader-title_text > div{
+  color: #dd0031;
+  font-size: 1.8rem;
+  font-family: "Linotype Univers 530 Medium";
+  font-weight: 600;
+  text-align: center;
+  vertical-align: middle;
+}
+
+
+
+
+/* Selector Row Styling */
+
+/* Intro Text Row */
+
+.intro_row{
+  min-height: 5vh;
+}
+
+/* Intro Text */
+#intro_text{
+  font-size: 0.7rem;
+}
+
+/* Data Selector Box Header */
+#selector_row > div:nth-child(2) > div > div > div.box-header{
+  background-color: #dd0031;
+}
+
+/* Data Selector Split Layout Div*/
+#data_selector > div{
+  overflow: visible;
+  vertical-align: top;
+}
+
+/* Selector labels */
+#local_authority-label{
+  font-family: 'Linotype Univers 530 Medium';
+  font-size: 0.8rem;
+}
+
+#gender-label span{
+  font-family: 'Linotype Univers 530 Medium';
+  font-size: 0.8rem;
+}
+
+/* Selector Content */
+.selectize-control{
+  white-space: normal;
+  z-index: 9999; !important
+}
+
+/* Radio button input */
+#gender .radio-inline{
+  width: 100px;
+  display: inline-flex;
+  align-items: center;
+}
+
+#gender .radio-inline:nth-child(2){
+  margin-left: 0px;
+}
+
+#gender > div.shiny-options-group{
+  display: inline;
+}
+
+#gender input[type="radio"]{
+  margin-top: 0px;
+}
+
+/* Radio button labels */
+#gender > div > label > span{
+  font-size: 0.8rem;
+}
+
+
+/* Content Row Structure */
+#content-row > .col-sm-12{
+  height: 100%;
+}
+
+.nav-tabs-custom{
+  height: 100%;
+}
+
+.tab-content{
+  height: 100%;
+}
+
+.tab-pane{
+  height: 100%;
+}
+
+
+
+
+/* Health Tab Sizing and Alignment*/
+
+/* Health Tab Keystat Row */
+#health-keystat_row{
+  height: 20%;
+}
+
+#health-keystat_row div{
+  height: 100%;
+  vertical-align: middle;
+}
+
+/* Health Tab Chart Row */
+#health-chart_row{
+  height: 45%;
+}
+
+/* Health Tab LA Chart */
+#health-hle_la_chart_column{
+  height: 100%;
+}
+
+#health-hle_la_chart_column > div{
+  height: 100%;
+}
+
+#health-hle_la_chart_column > div > .box-solid{
+  height: 100%;
+}
+
+#health-hle_la_chart_box{
+  height: 100%;
+}
+
+#health-hle_la_chart{
+  height: 100%;
+}
+
+#health-hle_la_chart > .highcharts-container{
+  height: 100% !important;
+}
+
+/* Health Tab LA Chart Text */
+#health-hle_chart_text_column{
+  height: 100%;
+}
+
+#health-hle_chart_text_column div{
+  vertical-align: middle;
+}
+
+/* Health Tab Explanatory Text */
+#health-hle_chart_text_column > div:nth-child(1){
+  height: 40%;
+}
+
+#health-hle_chart_text{
+  font-size: 0.7rem;
+}
+
+/* Health Tab Compstats */
+#health-hle_chart_text_column > div:nth-child(2){
+  height: 20%;
+}
+
+#health-hle_chart_text_column > div:nth-child(2) div{
+  height: 100%;
+}
+
+#health-hle_chart_text_column > div:nth-child(3){
+  height: 20%;
+}
+
+#health-hle_chart_text_column > div:nth-child(3) div{
+  height: 100%;
+}
+
+/* Health Tab Map Row */
+#health-map_row{
+  height: 35%;
+}
+
+#health-map_row > div{
+  height: 100%;
+}
+
+#health-map_row > div > .box-solid{
+  height: 100%;
+}
+
+#health-map_row > div > .box-solid > .box-body{
+  height: 100%;
+}
+
+/* Health Tab HLE IMD Box */
+#health-hle_imd_box{
+  height: 90%;
+}
+
+#health-hle_imd_box > div{
+  height: 100%;
+}
+
+#health-hle_imd_map{
+  height: 100%;
+}
+
+#health-hle_imd_chart{
+  height: 100%;
+}
+
+#health-hle_imd_chart > .highcharts-container{
+  height: 100%;
+}
+
+#health-legend{
+  height: 10%;
+  text-align: center;
+}
+
+
+
+/* Work Tab Sizing and Alignment*/
+
+/* Work Tab Keystat Row */
+#work-keystat_row{
+  height: 20%;
+}
+
+#work-keystat_row div{
+  height: 100%;
+  vertical-align: middle;
+}
+
+/* Work Tab Employees Row */
+#work-employees_row{
+  height: 10%;
+}
+
+#work-employees_row div{
+  height: 100%;
+}
+
+#work-employees_row .highcharts-container{
+  height: 100% !important;
+}
+
+#work-employees_title {
+  font-family: 'Linotype Univers 530 Medium';
+}
+
+/* Work Tab Chart Row */
+#work-chart_row{
+  height: 35%;
+}
+
+/* Work Tab LA Chart */
+#work-hle_la_chart_column{
+  height: 100%;
+}
+
+#work-hle_la_chart_column > div{
+  height: 100%;
+}
+
+#work-hle_la_chart_column > div > .box-solid{
+  height: 100%;
+}
+
+#work-hle_chart_box{
+  height: 100%;
+}
+
+#work-hle_chart{
+  height: 100%;
+}
+
+#work-hle_chart > .highcharts-container{
+  height: 100% !important;
+}
+
+/* Work Tab LA Chart Text */
+#work-hle_chart_text_column{
+  height: 100%;
+}
+
+#work-hle_chart_text_column div{
+  vertical-align: middle;
+}
+
+/* Work Tab Selectors */
+#work-hle_chart_text_column > div:nth-child(1){
+  height: 40%;
+}
+
+#work-chart_selector .radio input[type="radio"]{
+  height: 0.6rem;
+  width: 0.6rem;
+  margin-top: 10px;
+}
+
+#work-chart_selector .radio span{
+  font-size: 0.7rem;
+}
+
+/* Work Tab Compstats */
+#work-hle_chart_text_column > div:nth-child(2){
+  height: 20%;
+}
+
+#work-hle_chart_text_column > div:nth-child(2) div{
+  height: 100%;
+}
+
+#work-hle_chart_text_column > div:nth-child(3){
+  height: 20%;
+}
+
+#work-hle_chart_text_column > div:nth-child(3) div{
+  height: 100%;
+}
+
+
+/* Work Map Row */
+#work-map_row{
+  height: 35%;
+}
+
+#work-map_row > div{
+  height: 100%;
+}
+
+#work-map_row > div > .box-solid{
+  height: 100%;
+}
+
+#work-map_row > div > .box-solid > .box-body{
+  height: 100%;
+}
+
+/* Work Tab HLE UC Box */
+#work-hle_uc_box{
+  height: 90%;
+}
+
+#work-hle_uc_box > div{
+  height: 100%;
+}
+
+#work-hle_uc_map{
+  height: 100%;
+}
+
+#work-hle_uc_chart{
+  height: 100%;
+}
+
+#work-hle_uc_chart > .highcharts-container{
+  height: 100%;
+}
+
+#work-legend{
+  height: 10%;
+  text-align: center;
+}
+
+/* Money Tab Sizing and Alignment*/
+
+/* Money Tab Keystat Row */
+#money-keystat_row{
+  height: 20%;
+}
+
+#money-keystat_row div{
+  height: 100%;
+  vertical-align: middle;
+}
+
+/* Money Tab Chart Row */
+#money-chart_row{
+  height: 35%;
+}
+
+/* Money Tab LA Chart */
+#money-hle_la_chart_column{
+  height: 100%;
+}
+
+#money-hle_la_chart_column > div{
+  height: 100%;
+}
+
+#money-hle_la_chart_column > div > .box-solid{
+  height: 100%;
+}
+
+#money-hle_chart_box{
+  height: 100%;
+}
+
+#money-hle_chart{
+  height: 100%;
+}
+
+#money-hle_chart > .highcharts-container{
+  height: 100% !important;
+}
+
+/* Money Tab LA Chart Text */
+#money-hle_chart_text_column{
+  height: 100%;
+}
+
+#money-hle_chart_text_column div{
+  vertical-align: middle;
+}
+
+/* Money Tab Selectors */
+#money-hle_chart_text_column > div:nth-child(1){
+  height: 40%;
+}
+
+#money-chart_selector .radio input[type="radio"]{
+  height: 0.6rem;
+  width: 0.6rem;
+  margin-top: 10px;
+}
+
+#money-chart_selector .radio span{
+  font-size: 0.7rem;
+}
+
+/* Money Tab Compstats */
+#money-hle_chart_text_column > div:nth-child(2){
+  height: 20%;
+}
+
+#money-hle_chart_text_column > div:nth-child(2) div{
+  height: 100%;
+}
+
+#money-hle_chart_text_column > div:nth-child(3){
+  height: 20%;
+}
+
+#money-hle_chart_text_column > div:nth-child(3) div{
+  height: 100%;
+}
+
+
+/* Money Map Row */
+#money-map_row{
+  height: 35%;
+}
+
+#money-map_row > div{
+  height: 100%;
+}
+
+#money-map_row > div > .box-solid{
+  height: 100%;
+}
+
+#money-map_row > div > .box-solid > .box-body{
+  height: 100%;
+}
+
+/* Money Tab HLE Income Box */
+#money-hle_income_box{
+  height: 90%;
+}
+
+#money-hle_income_box > div{
+  height: 100%;
+}
+
+#money-hle_income_map{
+  height: 100%;
+}
+
+#money-hle_income_chart{
+  height: 100%;
+}
+
+#money-hle_income_chart > .highcharts-container{
+  height: 100%;
+}
+
+#money-legend{
+  height: 10%;
+  text-align: center;
+}
+
+
+/* Housing Tab Sizing and Alignment*/
+
+/* Housing Tab Keystat Row */
+#housing-keystat_row{
+  height: 20%;
+}
+
+#housing-keystat_row div{
+  height: 100%;
+  vertical-align: middle;
+}
+
+/* Housing Tab Tenure Row */
+#housing-tenure_row{
+  height: 10%;
+}
+
+#housing-tenure_row div{
+  height: 100%;
+}
+
+#housing-tenure_row .highcharts-container{
+  height: 100% !important;
+}
+
+#housing-tenure_title {
+  font-family: 'Linotype Univers 530 Medium';
+}
+
+/* Housing Tab Chart Row */
+#housing-chart_row{
+  height: 35%;
+}
+
+/* Housing Tab LA Chart */
+#housing-hle_la_chart_column{
+  height: 100%;
+}
+
+#housing-hle_la_chart_column > div{
+  height: 100%;
+}
+
+#housing-hle_la_chart_column > div > .box-solid{
+  height: 100%;
+}
+
+#housing-hle_chart_box{
+  height: 100%;
+}
+
+#housing-hle_chart{
+  height: 100%;
+}
+
+#housing-hle_chart > .highcharts-container{
+  height: 100% !important;
+}
+
+/* Housing Tab LA Chart Text */
+#housing-hle_chart_text_column{
+  height: 100%;
+}
+
+#housing-hle_chart_text_column div{
+  vertical-align: middle;
+}
+
+/* Housing Tab Selectors */
+#housing-hle_chart_text_column > div:nth-child(1){
+  height: 40%;
+}
+
+#housing-chart_selector .radio input[type="radio"]{
+  height: 0.6rem;
+  width: 0.6rem;
+  margin-top: 10px;
+}
+
+#housing-chart_selector .radio span{
+  font-size: 0.7rem;
+}
+
+/* Housing Tab Compstats */
+#housing-hle_chart_text_column > div:nth-child(2){
+  height: 20%;
+}
+
+#housing-hle_chart_text_column > div:nth-child(2) div{
+  height: 100%;
+}
+
+#housing-hle_chart_text_column > div:nth-child(3){
+  height: 20%;
+}
+
+#housing-hle_chart_text_column > div:nth-child(3) div{
+  height: 100%;
+}
+
+
+/* Housing Map Row */
+#housing-map_row{
+  height: 35%;
+}
+
+#housing-map_row > div{
+  height: 100%;
+}
+
+#housing-map_row > div > .box-solid{
+  height: 100%;
+}
+
+#housing-map_row > div > .box-solid > .box-body{
+  height: 100%;
+}
+
+/* Housing Tab HLE Houdep Box */
+#housing-hle_houdep_box{
+  height: 90%;
+}
+
+#housing-hle_houdep_box > div{
+  height: 100%;
+}
+
+#housing-hle_houdep_map{
+  height: 100%;
+}
+
+#housing-hle_houdep_chart{
+  height: 100%;
+}
+
+#housing-hle_houdep_chart > .highcharts-container{
+  height: 100%;
+}
+
+#housing-legend{
+  height: 10%;
+  text-align: center;
+}
+
+
+
+/* Transport Tab Sizing and Alignment*/
+
+/* Transport Tab Keystat Row */
+#transport-keystat_row{
+  height: 20%;
+}
+
+#transport-keystat_row div{
+  height: 100%;
+  vertical-align: middle;
+}
+
+/* Transport Tab Chart Row */
+#transport-chart_row{
+  height: 35%;
+}
+
+/* Transport Tab LA Chart */
+#transport-hle_la_chart_column{
+  height: 100%;
+}
+
+#transport-hle_la_chart_column > div{
+  height: 100%;
+}
+
+#transport-hle_la_chart_column > div > .box-solid{
+  height: 100%;
+}
+
+#transport-hle_chart_box{
+  height: 100%;
+}
+
+#transport-hle_chart{
+  height: 100%;
+}
+
+#transport-hle_chart > .highcharts-container{
+  height: 100% !important;
+}
+
+/* Transport Tab LA Chart Text */
+#transport-hle_chart_text_column{
+  height: 100%;
+}
+
+#transport-hle_chart_text_column div{
+  vertical-align: middle;
+}
+
+/* Transport Tab Selectors */
+#transport-hle_chart_text_column > div:nth-child(1){
+  height: 40%;
+}
+
+#transport-chart_selector .radio input[type="radio"]{
+  height: 0.6rem;
+  width: 0.6rem;
+  margin-top: 10px;
+}
+
+#transport-chart_selector .radio span{
+  font-size: 0.7rem;
+}
+
+/* Transport Tab Compstats */
+#transport-hle_chart_text_column > div:nth-child(2){
+  height: 20%;
+}
+
+#transport-hle_chart_text_column > div:nth-child(2) div{
+  height: 100%;
+}
+
+#transport-hle_chart_text_column > div:nth-child(3){
+  height: 20%;
+}
+
+#transport-hle_chart_text_column > div:nth-child(3) div{
+  height: 100%;
+}
+
+
+/* Transport Map Row */
+#transport-map_row{
+  height: 35%;
+}
+
+#transport-map_row > div{
+  height: 100%;
+}
+
+#transport-map_row > div > .box-solid{
+  height: 100%;
+}
+
+#transport-map_row > div > .box-solid > .box-body{
+  height: 100%;
+}
+
+/* Transport Tab HLE Income Box */
+#transport-hle_active_box{
+  height: 90%;
+}
+
+#transport-hle_active_box > div{
+  height: 100%;
+}
+
+#transport-hle_active_map{
+  height: 100%;
+}
+
+#transport-hle_active_chart{
+  height: 100%;
+}
+
+#transport-hle_active_chart > .highcharts-container{
+  height: 100%;
+}
+
+#transport-legend{
+  height: 10%;
+  text-align: center;
+}
+
+
+/* Education Tab Sizing and Alignment*/
+
+/* Education Tab Keystat Row */
+#education-keystat_row{
+  height: 20%;
+}
+
+#education-keystat_row div{
+  height: 100%;
+  vertical-align: middle;
+}
+
+/* Education Tab Employees Row */
+#education-highestqual_row{
+  height: 10%;
+}
+
+#education-highestqual_row div{
+  height: 100%;
+}
+
+#education-highestqual_row .highcharts-container{
+  height: 100% !important;
+}
+
+#education-highestqual_title {
+  font-family: 'Linotype Univers 530 Medium';
+}
+
+/* Education Tab Chart Row */
+#education-chart_row{
+  height: 35%;
+}
+
+/* Education Tab LA Chart */
+#education-hle_la_chart_column{
+  height: 100%;
+}
+
+#education-hle_la_chart_column > div{
+  height: 100%;
+}
+
+#education-hle_la_chart_column > div > .box-solid{
+  height: 100%;
+}
+
+#education-hle_chart_box{
+  height: 100%;
+}
+
+#education-hle_chart{
+  height: 100%;
+}
+
+#education-hle_chart > .highcharts-container{
+  height: 100% !important;
+}
+
+/* Education Tab LA Chart Text */
+#education-hle_chart_text_column{
+  height: 100%;
+}
+
+#education-hle_chart_text_column div{
+  vertical-align: middle;
+}
+
+/* Education Tab Selectors */
+#education-hle_chart_text_column > div:nth-child(1){
+  height: 40%;
+}
+
+#education-chart_selector .radio input[type="radio"]{
+  height: 0.6rem;
+  width: 0.6rem;
+  margin-top: 10px;
+}
+
+#education-chart_selector .radio span{
+  font-size: 0.7rem;
+}
+
+/* Education Tab Compstats */
+#education-hle_chart_text_column > div:nth-child(2){
+  height: 20%;
+}
+
+#education-hle_chart_text_column > div:nth-child(2) div{
+  height: 100%;
+}
+
+#education-hle_chart_text_column > div:nth-child(3){
+  height: 20%;
+}
+
+#education-hle_chart_text_column > div:nth-child(3) div{
+  height: 100%;
+}
+
+
+/* Education Map Row */
+#education-map_row{
+  height: 35%;
+}
+
+#education-map_row > div{
+  height: 100%;
+}
+
+#education-map_row > div > .box-solid{
+  height: 100%;
+}
+
+#education-map_row > div > .box-solid > .box-body{
+  height: 100%;
+}
+
+/* Education Tab HLE Qualifications Box */
+#education-hle_quals_box{
+  height: 90%;
+}
+
+#education-hle_quals_box > div{
+  height: 100%;
+}
+
+#education-hle_quals_map{
+  height: 100%;
+}
+
+#education-hle_quals_chart{
+  height: 100%;
+}
+
+#education-hle_quals_chart > .highcharts-container{
+  height: 100%;
+}
+
+#education-legend{
+  height: 10%;
+  text-align: center;
+}
+
+
+/* Community Tab Sizing and Alignment*/
+
+/* Community Tab Keystat Row */
+#community-keystat_row{
+  height: 20%;
+}
+
+#community-keystat_row div{
+  height: 100%;
+  vertical-align: middle;
+}
+
+/* Community Tab Chart Row */
+#community-chart_row{
+  height: 35%;
+}
+
+/* Community Tab LA Chart */
+#community-hle_la_chart_column{
+  height: 100%;
+}
+
+#community-hle_la_chart_column > div{
+  height: 100%;
+}
+
+#community-hle_la_chart_column > div > .box-solid{
+  height: 100%;
+}
+
+#community-hle_chart_box{
+  height: 100%;
+}
+
+#community-hle_chart{
+  height: 100%;
+}
+
+#community-hle_chart > .highcharts-container{
+  height: 100% !important;
+}
+
+/* Community Tab LA Chart Text */
+#community-hle_chart_text_column{
+  height: 100%;
+}
+
+#community-hle_chart_text_column div{
+  vertical-align: middle;
+}
+
+/* Community Tab Selectors */
+#community-hle_chart_text_column > div:nth-child(1){
+  height: 40%;
+}
+
+#community-chart_selector .radio input[type="radio"]{
+  height: 0.6rem;
+  width: 0.6rem;
+  margin-top: 10px;
+}
+
+#community-chart_selector .radio span{
+  font-size: 0.7rem;
+}
+
+/* Community Tab Compstats */
+#community-hle_chart_text_column > div:nth-child(2){
+  height: 20%;
+}
+
+#community-hle_chart_text_column > div:nth-child(2) div{
+  height: 100%;
+}
+
+#community-hle_chart_text_column > div:nth-child(3){
+  height: 20%;
+}
+
+#community-hle_chart_text_column > div:nth-child(3) div{
+  height: 100%;
+}
+
+
+/* Community Map Row */
+#community-map_row{
+  height: 35%;
+}
+
+#community-map_row > div{
+  height: 100%;
+}
+
+#community-map_row > div > .box-solid{
+  height: 100%;
+}
+
+#community-map_row > div > .box-solid > .box-body{
+  height: 100%;
+}
+
+/* Community Tab HLE Single-person households Box */
+#community-hle_singlehouseholds_box{
+  height: 90%;
+}
+
+#community-hle_singlehouseholds_box > div{
+  height: 100%;
+}
+
+#community-hle_singlehouseholds_map{
+  height: 100%;
+}
+
+#community-hle_singlehouseholds_chart{
+  height: 100%;
+}
+
+#community-hle_singlehouseholds_chart > .highcharts-container{
+  height: 100%;
+}
+
+#community-legend{
+  height: 10%;
+  text-align: center;
+}
+
+
+/* Surroundings Tab Sizing and Alignment*/
+
+/* Surroundings Tab Keystat Row */
+#surroundings-keystat_row{
+  height: 20%;
+}
+
+#surroundings-keystat_row div{
+  height: 100%;
+  vertical-align: middle;
+}
+
+/* Surroundings Tab Chart Row */
+#surroundings-chart_row{
+  height: 35%;
+}
+
+/* Surroundings Tab LA Chart */
+#surroundings-hle_la_chart_column{
+  height: 100%;
+}
+
+#surroundings-hle_la_chart_column > div{
+  height: 100%;
+}
+
+#surroundings-hle_la_chart_column > div > .box-solid{
+  height: 100%;
+}
+
+#surroundings-hle_chart_box{
+  height: 100%;
+}
+
+#surroundings-hle_chart{
+  height: 100%;
+}
+
+#surroundings-hle_chart > .highcharts-container{
+  height: 100% !important;
+}
+
+/* Surroundings Tab LA Chart Text */
+#surroundings-hle_chart_text_column{
+  height: 100%;
+}
+
+#surroundings-hle_chart_text_column div{
+  vertical-align: middle;
+}
+
+/* Surroundings Tab Selectors */
+#surroundings-hle_chart_text_column > div:nth-child(1){
+  height: 40%;
+}
+
+#surroundings-chart_selector .radio input[type="radio"]{
+  height: 0.6rem;
+  width: 0.6rem;
+  margin-top: 10px;
+}
+
+#surroundings-chart_selector .radio span{
+  font-size: 0.7rem;
+}
+
+/* Surroundings Tab Compstats */
+#surroundings-hle_chart_text_column > div:nth-child(2){
+  height: 20%;
+}
+
+#surroundings-hle_chart_text_column > div:nth-child(2) div{
+  height: 100%;
+}
+
+#surroundings-hle_chart_text_column > div:nth-child(3){
+  height: 20%;
+}
+
+#surroundings-hle_chart_text_column > div:nth-child(3) div{
+  height: 100%;
+}
+
+
+/* Surroundings Map Row */
+#surroundings-map_row{
+  height: 35%;
+}
+
+#surroundings-map_row > div{
+  height: 100%;
+}
+
+#surroundings-map_row > div > .box-solid{
+  height: 100%;
+}
+
+#surroundings-map_row > div > .box-solid > .box-body{
+  height: 100%;
+}
+
+/* Surroundings Tab HLE Green space Box */
+#surroundings-hle_greenspace_box{
+  height: 90%;
+}
+
+#surroundings-hle_greenspace_box > div{
+  height: 100%;
+}
+
+#surroundings-hle_greenspace_map{
+  height: 100%;
+}
+
+#surroundings-hle_greenspace_chart{
+  height: 100%;
+}
+
+#surroundings-hle_greenspace_chart > .highcharts-container{
+  height: 100%;
+}
+
+#surroundings-legend{
+  height: 10%;
+  text-align: center;
+}
+
+
+
+
+
+
+/* Key Stats Styling */
+.keystat_box{
+  background-color: #E2F0F2;
+  border-radius: 10px;
+  box-shadow: none;
+}
+
+.keystat_box > .shiny-split-layout{
+  vertical-align: middle;
+}
+
+.keystat_highlight{
+  color: #092a40;
+  /*text-decoration: underline;
+  text-decoration-color: #dd0031;
+  text-underline-offset: 10px;*/
+  font-size: 1.4rem;
+  font-weight: 400;
+  font-family: 'Linotype Univers 530 Medium';
+  padding-bottom: 2%;
+  display: inline-block;
+  vertical-align: middle;
+  text-align: center;
+  width: 100%;
+}
+
+.keystat_highlight > sup{
+  font-family: 'Linotype Univers 530 Medium';
+}
+
+.keystat{
+  font-size: 0.8rem;
+  display: inline-block;
+  white-space: normal;
+  vertical-align: middle;
+  text-align: left;
+  width: 100%;
+  padding-right: 2%;
+}
+
+
+
+
+/* Comparison Sats Styling */
+.compstat_box{
+  background-color: #E2F0F2;
+  text-align: left;
+  border-radius: 10px;
+  box-shadow: none;
+}
+
+.compstat_box > .shiny-split-layout{
+  vertical-align: middle;
+}
+
+.compstat_highlight{
+  color: #092a40;
+/*  text-decoration: underline;
+  text-decoration-color: #dd0031;
+  text-underline-offset: 5px; */
+  font-size: 1rem;
+  font-weight: 400;
+  font-family: 'Linotype Univers 530 Medium';
+  display: inline-block;
+  padding-right: 8px;
+  padding-left: 8px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  vertical-align: middle;
+  text-align: center;
+  width: 100%;
+}
+
+.compstat_highlight > sup{
+  font-family: 'Linotype Univers 530 Medium';
+}
+
+.compstat{
+  display: inline-block;
+  padding-right: 8px;
+  padding-left: 8px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  font-size: 0.8rem;
+  width: 100%;
+  white-space: normal;
+  text-align: left;
+  vertical-align: middle;
+}
+
+
+
+/* Box Styling */
+
+.box-solid{
+  border-color: #005078;
+  border-radius: 10px;
+  height: 100%;
+}
+
+.box-header{
+  background-color: #005078;
+  border-radius: 5px;
+  height: 60px;
+}
+
+.box-header > .box-title{
+  color: #ffffff;
+  font-family: 'Linotype Univers 530 Medium';
+  font-size: 0.9rem;
+  vertical-align: middle;
+}
+
+.box-header > .box-title > span{
+  color: #ffffff;
+  font-family: 'Linotype Univers 530 Medium';
+  font-size: 0.9rem;
+}
+
+#health-hle_la_title{
+  font-family: 'Linotype Univers 530 Medium';
+  font-size: 0.9rem;
+}
+
+#money-hle_chart_title{
+  font-family: 'Linotype Univers 530 Medium';
+  font-size: 0.9rem;
+}
+
+#work-hle_chart_title{
+  font-family: 'Linotype Univers 530 Medium';
+  font-size: 0.9rem;
+}
+
+#housing-hle_chart_title{
+  font-family: 'Linotype Univers 530 Medium';
+  font-size: 0.9rem;
+}
+
+#transport-hle_chart_title{
+  font-family: 'Linotype Univers 530 Medium';
+  font-size: 0.9rem;
+}
+
+#education-hle_chart_title{
+  font-family: 'Linotype Univers 530 Medium';
+  font-size: 0.9rem;
+}
+
+
+#community-hle_chart_title{
+  font-family: 'Linotype Univers 530 Medium';
+  font-size: 0.9rem;
+}
+
+#surroundings-hle_chart_title{
+  font-family: 'Linotype Univers 530 Medium';
+  font-size: 0.9rem;
+}
+
+#health-hle_imd_title{
+  font-family: 'Linotype Univers 530 Medium';
+  font-size: 0.9em;
+}
+
+#work-hle_uc_title{
+  font-family: 'Linotype Univers 530 Medium';
+  font-size: 0.9rem;
+}
+
+#money-hle_income_title{
+  font-family: 'Linotype Univers 530 Medium';
+  font-size: 0.9rem;
+}
+
+#housing-hle_houdep_title{
+  font-family: 'Linotype Univers 530 Medium';
+  font-size: 0.9rem;
+}
+
+#transport-hle_active_title{
+  font-family: 'Linotype Univers 530 Medium';
+  font-size: 0.9rem;
+}
+
+#education-hle_quals_title{
+  font-family: 'Linotype Univers 530 Medium';
+  font-size: 0.9rem;
+}
+
+#community-hle_singlehouseholds_title{
+  font-family: 'Linotype Univers 530 Medium';
+  font-size: 0.9rem;
+}
+
+#surroundings-hle_greenspace_title{
+  font-family: 'Linotype Univers 530 Medium';
+  font-size: 0.9rem;
+}
+
+
+.box{
+  border-top-style: none;
+  border-radius: 10px;
+}
+
+
+
+/* Tab Styling */
+#tabset{
+  font-size: 0.8rem;
+ }
+
+
+.nav-tabs-custom>.nav-tabs>li.active{
+  border-top-color: #ffffff;
+  margin-bottom: 0px;
+  font-size: 0.7rem;
+}
+
+.nav-tabs-custom>.nav-tabs>li>a{
+  font-family: 'Linotype Univers 530 Medium';
+}
+
+.nav-tabs-custom>.nav-tabs>li.active>a{
+  background-color: #dd0031;
+  color: #ffffff;
+}
+
+.nav-tabs-custom{
+  box-shadow: none;
+  margin-bottom: 0px;
+}
+
+
+
+/* Waiter Overlay */
+.waiter-overlay.waiter-local{
+  background-color: #e3e1db88 !important;
+}
+
+/* Waiter Initial Loading Screen */
+.waiter-overlay.waiter-fullscreen{
+  background-color: #e3e1db !important;
+}
+
+/* Waiter Initial Loading Screen Text */
+.waiter-overlay-content{
+  color: rgba(0, 0, 51, 0.3);
+}
+
+
+
+
+/* Legend Styling */
+
+.legend-title{
+  display: block;
+  font-weight: bold;
+  font-size: 0.8rem;
+}
+
+.jointlegend {
+  list-style: none;
+  padding: 0;
+  padding-top: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.legend-item{
+  display: inline-block;
+}
+
+.legend-item.legend-label{
+  margin: 0 8px;
+  font-weight: bold;
+  font-size: 0.8rem;
+  color: rgb(51,51,51);
+}
+
+.legend-item.legend-color {
+  width: 24px;
+  height: 16px;
+}
+
+.glossary_copy {
+  font-size: 0.8rem;
+}
+
+.datasource_copy {
+  font-size: 0.8rem;
+}
