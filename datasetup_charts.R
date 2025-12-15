@@ -2,6 +2,24 @@ library(highcharter)
 library(tidyverse)
 library(readxl)
 
+
+#number format function
+# Create your function
+custom_number_format <- function(x){ifelse(x > 999999999,
+                                           paste0(format(round((x/1000000000), 2), 
+                                                        nsmall=1, big.mark=","), "B"),
+                                           ifelse(x > 999999, 
+                                                  paste0(format(round((x/1000000), 1), 
+                                                               nsmall=1, big.mark=","),"M"), 
+                                                  format(round(x), nsmall=0, big.mark=",")))}
+
+# Now try it out
+custom_number_format(999)
+custom_number_format(999999)
+custom_number_format(1000000)
+custom_number_format(999900000)
+custom_number_format(1000000000)
+
 #####################
 ##################### 1.0 define colours
 #####################
@@ -37,7 +55,7 @@ df <- read_csv("db_data.csv") %>%
   ) %>% 
   select(-c(`Volunteers (-attribution) (£)`, `Volunteer value (mentor and non-mentor) (£)`)) %>% 
   relocate(`group_type`, .after = `group`) %>% 
-  filter(`Cohort years` %in% c("2014/15", 
+  filter(`Cohort years` %in% c(#"2014/15", 
                                "2015/16", 
                                "2016/17", 
                                "2017/18", 
@@ -51,6 +69,10 @@ df <- read_csv("db_data.csv") %>%
 
 #subset the total/all group for a constant series in the chart
 df_all <- df %>% filter(group == "all") %>% na.omit()
+
+df_ten_yr <- df %>% group_by(group, group_type) %>%
+  summarise_if(is.numeric, sum)
+  
 
 #set up a color lookup for the chart
 kt_sroi_colors_df <- tibble(

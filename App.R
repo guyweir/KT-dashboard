@@ -34,21 +34,35 @@ ui <-
     theme = my_theme,
     
     tags$h1("ECONOMIC VALUE CALCULATOR 2025", id = "main-title"),
-    
+    #intro box
+    # Intro row
+    fluidRow(
+      column(
+        width = 12,
+        bslib::card(
+          id = "intro_box",
+          uiOutput("intro_box_copy")
+        )
+      )
+    ),
+
     page_navbar(
       title = "",   # HEADER
       
       # ---- TAB summary ----
       nav_panel(
         "Summary",
-        layout_sidebar(
-          sidebar = sidebar(
-            value_box("SMetric A", value = "321", height = "10em",),
-            value_box("SMetric B", value = "654", height = "10em",),
-            value_box("SMetric C", value = "987", height = "10em",),
-            value_box("SMetric D", value = "202", height = "10em",),
-            value_box("SMetric E", value = "303", height = "10em",)
-          ),
+        
+        #removed as we don't need a sidebar for the summary
+                # layout_sidebar(
+        #   sidebar = sidebar(
+        #     value_box("SMetric A", value = "321", height = "10em",),
+        #     value_box("SMetric B", value = "654", height = "10em",),
+        #     value_box("SMetric C", value = "987", height = "10em",),
+        #     value_box("SMetric D", value = "202", height = "10em",),
+        #     value_box("SMetric E", value = "303", height = "10em",)
+        #   ),
+        
           layout_column_wrap(
             width = 1/1,
             max_height = 350,
@@ -68,7 +82,7 @@ ui <-
               )
             ),
             value_box(title = "Summary total",
-                      value = "120,000", 
+                      value = "120,000", #pipe this in from the data
                       showcase = bs_icon("bar-chart"),
                       theme = "red", 
                       fill = TRUE),
@@ -79,7 +93,7 @@ ui <-
                  highchartOutput("highchart_plot1")
             )
           )
-        )
+        #)
       ),
       
       # ---- TAB £ VALUE ----
@@ -87,15 +101,20 @@ ui <-
         "£ value",
         layout_sidebar(
           sidebar = sidebar(
-            value_box(title = "Economic value", value = "123bn", showcase = bs_icon("bar-chart"), height = "10em",
+            value_box(title = "Economic value", value = custom_number_format(df_ten_yr$`Economic value (GVA)`[df_ten_yr$group == "all"]), #pipe this in from the data
+                      showcase = bs_icon("bar-chart"), height = "10em",
                       theme = "purple"),
-            value_box(title = "Reduced re-offending", value = "123bn",showcase = bs_icon("bar-chart"), height = "10em",
+            value_box(title = "Reduced re-offending", value = custom_number_format(df_ten_yr$`Reduced re-offending`[df_ten_yr$group == "all"]),#pipe this in from the data
+                      showcase = bs_icon("bar-chart"), height = "10em",
                       theme = "yellow"),
-            value_box(title = "DWP/Health admin", value = "123bn",showcase = bs_icon("bar-chart"), height = "10em",
+            value_box(title = "DWP/Health admin", value = custom_number_format(df_ten_yr$`DWP/health admin`[df_ten_yr$group == "all"]),#pipe this in from the data
+                      showcase = bs_icon("bar-chart"), height = "10em",
                       theme = "red"),
-            value_box(title = "Volunteers", value = "123bn",showcase = bs_icon("bar-chart"), height = "10em",
+            value_box(title = "Volunteers", value = custom_number_format(df_ten_yr$`Volunteer value`[df_ten_yr$group == "all"]),#pipe this in from the data
+                      showcase = bs_icon("bar-chart"), height = "10em",
                       theme = "orange"),
-            value_box(title = "Wellbeing", value = "123bn",showcase = bs_icon("bar-chart"),, height = "10em",theme = "grey")
+            value_box(title = "Wellbeing", value = custom_number_format(df_ten_yr$Wellbeing[df_ten_yr$group == "all"]),#pipe this in from the data
+                      showcase = bs_icon("bar-chart"),, height = "10em",theme = "grey")
           ),
           # Main body
           layout_column_wrap(
@@ -252,8 +271,13 @@ server <- function(input, output, session) {
     state2$subgroup <- input$filter4
   })
   
+  #the copy for the umm intro box!
+  output$intro_box_copy <- renderUI({
+    HTML("<span class='intro_copy'>Intro text copy to go here, box to be styled etc.")
+  })
   
   
+
   
   ###############
   ############### reactive data for tab 1 chart
@@ -285,7 +309,7 @@ server <- function(input, output, session) {
       highchart1 <- highchart() %>% 
         hc_chart(type = "column", spacingRight = 80) %>%
         
-        hc_xAxis(categories = df_ts$names, #substitute this for the selected interactive filter input
+        hc_xAxis(categories = df_total$names, #substitute this for the selected interactive filter input
                  title = list(text = "")
                  
         ) %>% 
@@ -296,11 +320,7 @@ server <- function(input, output, session) {
             #stacking = "normal" # use stack to align them
           )
         ) %>%  
-        
-        hc_xAxis(
-          categories = df_ts$names,
-          title = list(text = "")
-        ) %>% 
+
         
         # BACK BAR (TOTAL)
         hc_add_series(
@@ -423,7 +443,7 @@ server <- function(input, output, session) {
         ) %>% 
         
         #bar total (CONSTANT)
-        hc_add_series(name="Total SROI",
+        hc_add_series(name= "Total SROI",
                       data = (df_all$`Total savings`),
                       stack = "Main",
                       pointPadding = 0,
@@ -436,7 +456,7 @@ server <- function(input, output, session) {
         
         #bar sub-group
         hc_add_series(name= unique(data_highchart2()$group),
-                      data = data_highchart2()$`Economic value (GVA)`, ##### NEED TO MAKE THIS COLUMN SELECT REACTIVE
+                      data = data_highchart2()$`Total savings`, #make this interactive from the side boxes
                       color = kt_colors[8], #purple
                       borderWidth = 0,
                       pointWidth = 23,
@@ -446,9 +466,9 @@ server <- function(input, output, session) {
                       x = -25) %>%
         
         #line component value
-        hc_add_series(data = cht_series, 
+        hc_add_series(data = cht_series, #make this interactive from the side boxes
                       type = "line",
-                      name = "Economic value",
+                      name = "Economic value (GVA)", #make this interactive from the side boxes
                       marker = list(symbol = 'circle'),
                       pointPlacement = "on",
                       color = kt_colors[5],
@@ -456,14 +476,14 @@ server <- function(input, output, session) {
                       dataLabels = list(enabled = F)) %>%
         
         #line component value sub-group
-        # hc_add_series(data = cht_series_sub, 
-        #               type = "line",
-        #               name = "Economic value <br> male",
-        #               color = kt_colors[4],
-        #               
-        #               zIndex = 51,
-        #               marker = list(symbol = 'circle'),
-        #               dataLabels = list(enabled = F)) %>%
+        hc_add_series(data = cht_series_sub, #make this interactive from the side boxes
+                      type = "line",
+                      name = unique(data_highchart2()$group), #make this interactive from the side boxes
+                      color = kt_colors[4],
+
+                      zIndex = 51,
+                      marker = list(symbol = 'circle'),
+                      dataLabels = list(enabled = F)) %>%
         
         hc_xAxis(title = list(text = ""))%>%
         hc_yAxis(title = list(text = "£")
