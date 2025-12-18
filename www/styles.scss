@@ -1,3 +1,81 @@
+/**/
+/* main element styles */
+
+body {
+  background-color: $body-bg;
+  color: $body-color;
+}
+
+
+.container-md {
+  background-color: transparent;
+}
+
+
+/* Ensure the dropdown content doesn’t get clipped */
+.selectize-dropdown-content {
+  white-space: nowrap !important;
+}
+
+h1 {
+  text-align: center !important;
+  font-size: 28px !important;
+}
+
+#main-header {
+  background-color: #CC0033;
+  height: 100px;
+  display: flex; 
+  align-items: center; 
+  justify-content: space-between; 
+  /* pushes left + right logos outward */ 
+  padding: 5px 40px; 
+  margin-bottom: 20px;
+}
+
+#main-title { 
+  color: white;
+  flex: 1; 
+  /* allows the title to center itself */ 
+  text-align: center; 
+  margin: 0; } 
+  
+  
+.header-logo { 
+ height: 60px; 
+ width: auto; 
+ display: block;
+}
+
+
+#intro_box {
+  background: #323232;
+  color: white;
+}
+
+
+/* Outer navbar */
+.navbar.navbar-default{
+  background: #1E1964!important;
+  color: white!important;
+  float: none;
+  margin: 0 auto;
+  display: table;
+}
+
+.navbar.navbar-default .nav-link {
+  color: white !important;
+}
+
+.navbar.navbar-default .nav-link.active {
+  color: #95e8bf !important;   /* or your brand highlight */
+  border-bottom: 3px solid #95e8bf;
+}
+
+
+
+/**/
+/* specific interactives*/
 /* Create a new stacking context for the filter card */
 .filter-card {
   position: relative !important;
@@ -17,17 +95,15 @@
   max-width: none !important;   /* allow expansion for long items */
 }
 
-/* Ensure the dropdown content doesn’t get clipped */
-.selectize-dropdown-content {
-  white-space: nowrap !important;
+/* hide the sidebat toggle */
+.collapse-toggle {
+  display: none !important;
 }
 
-h1 {
-  text-align: center !important;
-}
 
+/**/
 /* style the interactive buttons */
-
+/**/
 
 /* Base state */
 .value-box-button > .bslib-value-box {
@@ -40,14 +116,16 @@ h1 {
 /* Hover */
 .value-box-button:hover > .bslib-value-box {
   transform: translateY(-3px);
+  cursor: pointer !important;
   box-shadow: 0 4px 12px rgba(0,0,0,0.15) !important;
+  opacity: 0.7!important;
 }
 
 
 /* Selected state */
 .value-box-button.selected > .bslib-value-box {
   border: 2px solid #6f42c1 !important;
-  box-shadow: 0 0 0 3px rgba(111, 66, 193, 0.25) !important;
+  box-shadow: 0 0 0 4px #28D796 !important;
   transform: translateY(-2px);
 }
 

@@ -6,12 +6,12 @@ library(readxl)
 #number format function
 # Create your function
 custom_number_format <- function(x){ifelse(x > 999999999,
-                                           paste0(format(round((x/1000000000), 2), 
+                                           paste0("£",format(round((x/1000000000), 2), 
                                                         nsmall=1, big.mark=","), "bn"),
                                            ifelse(x > 999999, 
-                                                  paste0(format(round((x/1000000), 1), 
+                                                  paste0("£",format(round((x/1000000), 1), 
                                                                nsmall=1, big.mark=","),"m"), 
-                                                  format(round(x), nsmall=0, big.mark=",")))}
+                                                  format("£",round(x), nsmall=0, big.mark=",")))}
 
 # Now try it out
 custom_number_format(999)
@@ -25,16 +25,17 @@ custom_number_format(1000000000)
 #####################
 
 #colours
-kt_colors <- c("#CC0033", #red
-               "#1E1964", #blue
-               "#28D796", #limegreen
-               "#5009B0", #purple
-               "#323232", #charcoal
-               "#F2F2F2", #grey
-               "#7a6da0", #mid-purple
-               "#a69bbf", #light purple
-               "#95e8bf", #mid green
-               "#def6e9" #light green
+kt_colors <- c("#CC0033", #1 red
+               "#1E1964", #2 blue
+               "#28D796", #3 limegreen
+               "#5009B0", #4 purple
+               "#323232", #5 charcoal
+               "#F2F2F2", #6 grey
+               "#7a6da0", #7 mid-purple
+               "#a69bbf", #8 light purple
+               "#95e8bf", #9 mid green
+               "#def6e9", #10 light green
+               "#ddb6b3" #11 light red
                ) 
 
 #####################
@@ -209,7 +210,7 @@ kt_sroi_colors_df <- tibble(
 
 #background series always present
 df_total <- df %>% filter(`Cohort years` == "2024/25") %>% 
-  select(-c(`Cohort count`,`Total savings`)) %>% 
+  select(-c(`Cohort count`,`Total savings`, `Dummy`)) %>% 
   filter(group == "all"
   ) %>% 
   pivot_longer(

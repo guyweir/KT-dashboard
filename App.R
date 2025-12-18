@@ -14,12 +14,15 @@ library(sass)
 
 source("datasetup_charts.r")
 
-my_theme <- bs_theme(version = 5) %>% 
+my_theme <- bs_theme(version = 5,
+                     fg = kt_colors[5],
+                     bg = kt_colors[6],
+                     primary = "#005EB8",
+                     base_font = "Helvetica") %>% 
   bs_add_rules(
-    sass::sass(
-      input = sass::sass_file("www/styles.scss")
+    sass::sass_file("www/styles.scss")
     )
-  )
+  
 
 ########################################################################
 ########################################################################
@@ -34,8 +37,14 @@ ui <-
     theme = my_theme,
    
     
-    div(class = "container-md",
-    tags$h1("ECONOMIC VALUE CALCULATOR 2025", id = "main-title"),
+  div(class = "container-md",
+        
+      div(class = "container-md",
+        id = "main-header",
+      img(src = "logo_left.svg", id = "main-logo", class = "header-logo"),
+      tags$h1("ECONOMIC VALUE CALCULATOR 2025", id = "main-title"),
+      img(src = "logo_right.svg", id = "main-logo", class = "header-logo")
+      ),
     
     tags$script(HTML(" Shiny.addCustomMessageHandler('addSelectedClass', function(id) {
                      $('#' + id).addClass('selected'); });
@@ -55,9 +64,11 @@ ui <-
 
     page_navbar(
       title = "",   # HEADER
+      id = "summary-navbar",
       
       # ---- TAB summary ----
       nav_panel(
+       
         "Summary",
         
         #removed as we don't need a sidebar for the summary
@@ -84,17 +95,25 @@ ui <-
                 layout_column_wrap(
                   width = 1/2,
                   selectizeInput("filter1", "Parent", choices = unique(df$group_type), options = list( persist = FALSE, create = FALSE )),
-                  selectizeInput("filter2", "Subgroup", choices = NULL,options = list( persist = FALSE, create = FALSE )) #this needs to reference the selector above!
+                  selectizeInput("filter2", "Subgroup", choices = NULL, options = list( persist = FALSE, create = FALSE )) #this needs to reference the selector above!
                 )
               )
             ),
-            
-            
-            value_box(title = "10 year total SROI",
+            card_body(
+            layout_column_wrap(
+              width = 1/2,
+            value_box(title = "10 year Total Social Return on Investment",
                       value = custom_number_format(df_ten_yr$`Total savings`[df_ten_yr$group == "all"]), #pipe this in from the data
-                      showcase = bs_icon("bar-chart"),
+                      showcase = bs_icon("clipboard-data"),
                       theme = "red", 
                       fill = TRUE),
+            
+            value_box(title = "Some text here to describe the 10 year SROI, Some text here to describe the 10 year SROI , Some text here to describe the 10 year SROI",
+                      value = NULL, #pipe this in from the data
+                      showcase = NULL,
+                      theme = "red", 
+                      fill = TRUE)
+            )),
             
             
             card(fill = FALSE,
@@ -105,9 +124,9 @@ ui <-
         #)
       ),
       
-      # ---- TAB £ VALUE ----
+      # ---- TAB Time Series ----
       nav_panel(
-        "£ value",
+        "Time Series",
         layout_sidebar(
           sidebar = sidebar(
             
@@ -116,10 +135,10 @@ ui <-
               class = "value-box-button",
               onclick = "Shiny.setInputValue('select_econ_value', Math.random())",
               value_box(
-                title = "Economic value",
+                title = "Economic value (10 yr)",
                 value = custom_number_format(df_ten_yr$`Economic value (GVA)`[df_ten_yr$group == "all"]),
                 height = "6em",
-                theme = "purple"
+                theme = value_box_theme(bg = kt_colors[2])  #"purple"
               )
             ),
             
@@ -129,10 +148,10 @@ ui <-
               class = "value-box-button",
               onclick = "Shiny.setInputValue('select_off_value', Math.random())",
               value_box(
-                title = "Re-offender value",
+                title = "Re-offender value (10 yr)",
                 value = custom_number_format(df_ten_yr$`Reduced re-offending`[df_ten_yr$group == "all"]),
                 height = "6em",
-                theme = "yellow"
+                theme = value_box_theme(bg = kt_colors[2])  #"yellow"
               )
             ),
             
@@ -141,10 +160,10 @@ ui <-
               class = "value-box-button",
               onclick = "Shiny.setInputValue('select_dwp_value', Math.random())",
               value_box(
-                title = "DWP/health value",
+                title = "DWP/health value (10 yr)",
                 value = custom_number_format(df_ten_yr$`DWP/health admin`[df_ten_yr$group == "all"]),
                 height = "6em",
-                theme = "red"
+                theme = value_box_theme(bg = kt_colors[2]) #"red"
               )
             ) ,
                 
@@ -154,10 +173,10 @@ ui <-
               class = "value-box-button",
               onclick = "Shiny.setInputValue('select_vol_value', Math.random())",
               value_box(
-                title = "Volunteer value",
+                title = "Volunteer value (10 yr)",
                 value = custom_number_format(df_ten_yr$`Volunteer value`[df_ten_yr$group == "all"]),
                 height = "6em",
-                theme = "orange"
+                theme = value_box_theme(bg = kt_colors[2]) #"orange"
               )
             ) ,
             
@@ -168,10 +187,10 @@ ui <-
               class = "value-box-button",
               onclick = "Shiny.setInputValue('select_well_value', Math.random())",
               value_box(
-                title = "Volunteer value",
+                title = "Volunteer value (10 yr)",
                 value = custom_number_format(df_ten_yr$Wellbeing[df_ten_yr$group == "all"]),
                 height = "6em",
-                theme = "white"
+                theme = value_box_theme(bg = kt_colors[2]) #"white"
               )
             ) 
             ),
@@ -188,15 +207,15 @@ ui <-
                 style = "height: 90px;",
                 layout_column_wrap(
                   width = 1/2,
-                  selectizeInput("filter3", "Subgroup parent", choices = unique(df$group_type),options = list( persist = FALSE, create = FALSE )),
-                  selectizeInput("filter4", "Subgroup", choices = NULL,options = list( persist = FALSE, create = FALSE )) 
+                  selectizeInput("filter3", "Subgroup parent", choices = unique(df$group_type), options = list( persist = FALSE, create = FALSE )),
+                  selectizeInput("filter4", "Subgroup", choices = NULL, options = list( persist = FALSE, create = FALSE )) 
                 )
               )
             ),
             
-            value_box(title = "Total Social Return on Investment",
+            value_box(title = "10 year Total Social Return on Investment",
                       value = custom_number_format(df_ten_yr$`Total savings`[df_ten_yr$group == "all"]),
-                      showcase = bs_icon("bar-chart"),theme = "blue", fill = TRUE),
+                      showcase = bs_icon("bar-chart"),theme = value_box_theme(bg = kt_colors[1]), fill = TRUE),
             
             card(fill = FALSE,
                  #card_header("Title"),
@@ -337,7 +356,13 @@ server <- function(input, output, session) {
   
   #the copy for the umm intro box!
   output$intro_box_copy <- renderUI({
-    HTML("<span class='intro_copy'>Intro text copy to go here, box to be styled etc.")
+    HTML("<span class='intro_copy'> This dashboard presents the headline results of the King's Trust Social Returns on Investment (SROI) economic analysis done in collaboration with WPI Economics. <br><br>
+         The summary tab below gives results aggregated over the ten year period from 2015/16 to 2024/25 split by 5 components. Use the filters to select a sub group of interest.<br><br>
+         The `Time Series` tab gives results over time. Use the blue buttons on the left to add one of the five components to the chart and also use the filters to select sub-groups of interest.<br><br>
+         Worth noting that the series can be swithced off from the legend of each chart if a metric is overpowering a chart!
+         
+         
+         ")
   })
   
   ###############
@@ -425,7 +450,7 @@ server <- function(input, output, session) {
   data_highchart1 <- reactive({
     #set up the df to feed the chart. This will change depending on user inputs
     df %>% filter(`Cohort years` == "2024/25") %>% 
-      select(-c(`Cohort count`,`Total savings`)) %>% 
+      select(-c(`Cohort count`,`Total savings`, `Dummy`)) %>% 
       filter(group == input$filter2, # <<<< INTERACTIVE INPUT HERE
              
       ) %>% 
@@ -475,7 +500,7 @@ server <- function(input, output, session) {
           pointPlacement = 0,
           
           borderWidth = 0,
-          color = kt_colors[6],
+          color = kt_colors[11], #kt_colors[6],
           zIndex = 1
           #showInLegend = FALSE
         ) %>%
@@ -591,36 +616,39 @@ server <- function(input, output, session) {
       
       highchart2 <- highchart() %>% 
         hc_chart(type = "column", spacingRight = 80) %>%
+        hc_title(text = "", align = "left", 
+                 
+                 style = list(fontSize ="24px",#color = green.pair[1], 
+                              fontFamily = "Arial", fontWeight = "400" )) %>% 
+        hc_exporting(enabled = F) %>% 
         
         hc_xAxis(categories = df_all$`Cohort years`, #substitute this for the selected interactive filter input
-                 title = list(text = "")
+                 title = list(text = "")) %>% 
+        hc_yAxis(title = list(text = "£")) %>% 
+        hc_plotOptions(
+          column = list(
+            grouping = FALSE) ) %>%  # don’t put series side by side
+          
+        
                  
-        ) %>% 
         
         #bar total (CONSTANT)
         hc_add_series(name= "Total SROI",
-                      data = (df_all$`Total savings`),
+                      data = df_all$`Total savings`,
+                      type = "column",
                       stack = "Main",
+                      
                       # Shared width logic
                       pointPadding = 0,
                       groupPadding = 0.2,
                       maxPointWidth = 120,
                       pointPlacement = 0,
                       
-                      color = kt_colors[6], #light grey
+                      color = ifelse(input$filter3 == "all" , kt_colors[1], kt_colors[11]), #red
                       zIndex = 1) %>%
         
 
-        hc_xAxis(title = list(text = ""))%>%
-        hc_yAxis(title = list(text = "£")
-        ) %>%
-        #hc_size(width = 500) %>% 
-        hc_title(text = "", align = "left", 
-                 
-                 style = list(fontSize ="24px",#color = green.pair[1], 
-                              fontFamily = "Arial", fontWeight = "400" )) %>% 
-        hc_exporting(enabled = F) %>% 
-          
+    
         #line component value
           hc_add_series(data = cht_series, #make this interactive from the side boxes
                         type = "line",
@@ -631,6 +659,7 @@ server <- function(input, output, session) {
                         zIndex = 50,
                         dataLabels = list(enabled = F))
       
+      
       #condition so that sub groups don't render until a sub group selected
       if (input$filter4 != "all") {
       highchart2 <- highchart2 %>% 
@@ -638,14 +667,17 @@ server <- function(input, output, session) {
         #bar sub-group
         hc_add_series(name= paste0("Total SROI: ", unique(data_highchart_total_sub()$group)),
                       data = data_highchart_total_sub()$`Total savings`, #make this interactive from the side boxes
-                      color = kt_colors[8], #purple
+                      type = "column",
+                      stack = "Main",
+                      color = kt_colors[1], #lihght red
+                      
                       # Shared width logic
                       pointPadding = 0,
                       groupPadding = 0.2,
                       maxPointWidth = 120,
                       pointPlacement = 0,
                       #position = list(offsetY = -25),
-                      stack = "Main",
+                      
                       zIndex = 2
                       ) %>%
 
