@@ -480,6 +480,7 @@ server <- function(input, output, session) {
         
         hc_plotOptions(
           column = list(
+            animation = FALSE,
             grouping = FALSE   # don’t put series side by side
             #stacking = "normal" # use stack to align them
           )
@@ -627,6 +628,7 @@ server <- function(input, output, session) {
         hc_yAxis(title = list(text = "£")) %>% 
         hc_plotOptions(
           column = list(
+            animation = FALSE,
             grouping = FALSE) ) %>%  # don’t put series side by side
           
         
