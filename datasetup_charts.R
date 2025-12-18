@@ -7,10 +7,10 @@ library(readxl)
 # Create your function
 custom_number_format <- function(x){ifelse(x > 999999999,
                                            paste0(format(round((x/1000000000), 2), 
-                                                        nsmall=1, big.mark=","), "B"),
+                                                        nsmall=1, big.mark=","), "bn"),
                                            ifelse(x > 999999, 
                                                   paste0(format(round((x/1000000), 1), 
-                                                               nsmall=1, big.mark=","),"M"), 
+                                                               nsmall=1, big.mark=","),"m"), 
                                                   format(round(x), nsmall=0, big.mark=",")))}
 
 # Now try it out

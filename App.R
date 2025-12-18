@@ -32,8 +32,15 @@ ui <-
   page_fillable(
     
     theme = my_theme,
+   
+    
     div(class = "container-md",
     tags$h1("ECONOMIC VALUE CALCULATOR 2025", id = "main-title"),
+    
+    tags$script(HTML(" Shiny.addCustomMessageHandler('addSelectedClass', function(id) {
+                     $('#' + id).addClass('selected'); });
+                     Shiny.addCustomMessageHandler('removeSelectedClass', function(id) { $('#' + id).removeClass('selected'); });
+                     ")),
     #intro box
     # Intro row
     fluidRow(
@@ -76,8 +83,8 @@ ui <-
                 
                 layout_column_wrap(
                   width = 1/2,
-                  selectizeInput("filter1", "Parent", choices = unique(df$group_type)),
-                  selectizeInput("filter2", "Subgroup", choices = NULL) #this needs to reference the selector above!
+                  selectizeInput("filter1", "Parent", choices = unique(df$group_type), options = list( persist = FALSE, create = FALSE )),
+                  selectizeInput("filter2", "Subgroup", choices = NULL,options = list( persist = FALSE, create = FALSE )) #this needs to reference the selector above!
                 )
               )
             ),
@@ -105,67 +112,70 @@ ui <-
           sidebar = sidebar(
             
             tags$div(
+              id = "select_econ_value_box",
               class = "value-box-button",
-              actionButton(
-                inputId = "select_econ_value",
-                label = value_box(title = "Economic value", value = custom_number_format(df_ten_yr$`Economic value (GVA)`[df_ten_yr$group == "all"]), #pipe this in from the data
-                                                    # showcase = bs_icon("bar-chart"), 
-                                  height = "6em",
-                                                     theme = "purple"),
-                style = "border: none; background: none; padding: 0; width: 100%;"
+              onclick = "Shiny.setInputValue('select_econ_value', Math.random())",
+              value_box(
+                title = "Economic value",
+                value = custom_number_format(df_ten_yr$`Economic value (GVA)`[df_ten_yr$group == "all"]),
+                height = "6em",
+                theme = "purple"
               )
             ),
             
             
-                        tags$div(
+            tags$div(
+              id = "select_off_value_box",
               class = "value-box-button",
-              actionButton(
-                inputId = "select_off_value",
-                label = value_box(title = "Reduced re-offending", value = custom_number_format(df_ten_yr$`Reduced re-offending`[df_ten_yr$group == "all"]),#pipe this in from the data
-                      #showcase = bs_icon("bar-chart"), 
-                      height = "6em",
-                      theme = "yellow"),
-                style = "border: none; background: none; padding: 0; width: 100%;"
+              onclick = "Shiny.setInputValue('select_off_value', Math.random())",
+              value_box(
+                title = "Re-offender value",
+                value = custom_number_format(df_ten_yr$`Reduced re-offending`[df_ten_yr$group == "all"]),
+                height = "6em",
+                theme = "yellow"
               )
-                        ),
+            ),
             
-            
-                        tags$div(
+            tags$div(
+              id = "select_dwp_value_box",
               class = "value-box-button",
-              actionButton(
-                inputId = "select_dwp_value",
-                label = value_box(title = "DWP/Health admin", value = custom_number_format(df_ten_yr$`DWP/health admin`[df_ten_yr$group == "all"]),#pipe this in from the data
-                     # showcase = bs_icon("bar-chart"), 
-                      height = "6em",
-                      theme = "red"),
-                style = "border: none; background: none; padding: 0; width: 100%;"
+              onclick = "Shiny.setInputValue('select_dwp_value', Math.random())",
+              value_box(
+                title = "DWP/health value",
+                value = custom_number_format(df_ten_yr$`DWP/health admin`[df_ten_yr$group == "all"]),
+                height = "6em",
+                theme = "red"
               )
-                        ),
+            ) ,
                 
                 
-                tags$div(
-                  class = "value-box-button",
-                  actionButton(
-                    inputId = "select_vol_value",
-                    label = value_box(title = "Volunteers", value = custom_number_format(df_ten_yr$`Volunteer value`[df_ten_yr$group == "all"]),#pipe this in from the data
-                                      #showcase = bs_icon("bar-chart"), 
-                                      height = "6em",
-                                      theme = "orange"),
-                    style = "border: none; background: none; padding: 0; width: 100%;"
-                  )
-                ),
-                    
-                    
-                    tags$div(
-                      class = "value-box-button",
-                      actionButton(
-                        inputId = "select_well_value",
-                        label = value_box(title = "Wellbeing", value = custom_number_format(df_ten_yr$Wellbeing[df_ten_yr$group == "all"]),#pipe this in from the data
-                      #showcase = bs_icon("bar-chart"),
-                      height = "6em",theme = "grey"),
-                style = "border: none; background: none; padding: 0; width: 100%;"
+            tags$div(
+              id = "select_vol_value_box",
+              class = "value-box-button",
+              onclick = "Shiny.setInputValue('select_vol_value', Math.random())",
+              value_box(
+                title = "Volunteer value",
+                value = custom_number_format(df_ten_yr$`Volunteer value`[df_ten_yr$group == "all"]),
+                height = "6em",
+                theme = "orange"
               )
-            )          ),
+            ) ,
+            
+            
+            
+            tags$div(
+              id = "select_well_value_box",
+              class = "value-box-button",
+              onclick = "Shiny.setInputValue('select_well_value', Math.random())",
+              value_box(
+                title = "Volunteer value",
+                value = custom_number_format(df_ten_yr$Wellbeing[df_ten_yr$group == "all"]),
+                height = "6em",
+                theme = "white"
+              )
+            ) 
+            ),
+            
           # Main body
           layout_column_wrap(
             width = 1/1,
@@ -178,13 +188,15 @@ ui <-
                 style = "height: 90px;",
                 layout_column_wrap(
                   width = 1/2,
-                  selectizeInput("filter3", "Subgroup parent", choices = unique(df$group_type)),
-                  selectizeInput("filter4", "Subgroup", choices = NULL) 
+                  selectizeInput("filter3", "Subgroup parent", choices = unique(df$group_type),options = list( persist = FALSE, create = FALSE )),
+                  selectizeInput("filter4", "Subgroup", choices = NULL,options = list( persist = FALSE, create = FALSE )) 
                 )
               )
             ),
             
-            value_box(title = "Total Social Return on Investment",value = "£3.8bn", showcase = bs_icon("bar-chart"),theme = "blue", fill = TRUE),
+            value_box(title = "Total Social Return on Investment",
+                      value = custom_number_format(df_ten_yr$`Total savings`[df_ten_yr$group == "all"]),
+                      showcase = bs_icon("bar-chart"),theme = "blue", fill = TRUE),
             
             card(fill = FALSE,
                  #card_header("Title"),
@@ -236,7 +248,8 @@ ui <-
         )
       )
     ))
-    )
+)
+    
 
 ########################################################################
 ########################################################################
@@ -342,7 +355,7 @@ server <- function(input, output, session) {
   
   # 2 Define the reactive state
   selected_metric <- reactiveVal("Dummy")  # default
- 
+  selected_metric_id <- reactiveVal(NULL)
   # 3 Observe all value-box buttons
   # observeEvent(
   #   {
@@ -360,23 +373,49 @@ server <- function(input, output, session) {
   
   observeEvent(input$select_econ_value, {
     selected_metric(metric_map[["select_econ_value"]])
+    selected_metric_id("select_econ_value")
   })
   
   observeEvent(input$select_off_value, {
     selected_metric(metric_map[["select_off_value"]])
+    selected_metric_id("select_off_value")
   })
   
   observeEvent(input$select_dwp_value, {
     selected_metric(metric_map[["select_dwp_value"]])
+    selected_metric_id("select_dwp_value")
   })
   
   observeEvent(input$select_well_value, {
     selected_metric(metric_map[["select_well_value"]])
+    selected_metric_id("select_well_value")
   })
   
   observeEvent(input$select_vol_value, {
     selected_metric(metric_map[["select_vol_value"]])
+    selected_metric_id("select_vol_value")
   })
+  
+  
+  # different css for clicked and not clicked sidebar
+  observe({
+    # remove selected class from all
+    lapply(c(
+      "select_econ_value_box",
+      "select_off_value_box",
+      "select_dwp_value_box",
+      "select_well_value_box",
+      "select_vol_value_box"
+    ), function(id) {
+      session$sendCustomMessage("removeSelectedClass", id)
+    })
+    
+    # add selected class to the active one 
+    if (!is.null(selected_metric_id())) {
+      active_id <- paste0(selected_metric_id(), "_box") 
+      session$sendCustomMessage("addSelectedClass", active_id) }
+  })
+  
   
   
   ###############
@@ -562,11 +601,12 @@ server <- function(input, output, session) {
         hc_add_series(name= "Total SROI",
                       data = (df_all$`Total savings`),
                       stack = "Main",
+                      # Shared width logic
                       pointPadding = 0,
-                      
-                      pointWidth = 60,
+                      groupPadding = 0.2,
+                      maxPointWidth = 120,
                       pointPlacement = 0,
-                      groupPadding = 0,
+                      
                       color = kt_colors[6], #light grey
                       zIndex = 1) %>%
         
@@ -599,9 +639,11 @@ server <- function(input, output, session) {
         hc_add_series(name= paste0("Total SROI: ", unique(data_highchart_total_sub()$group)),
                       data = data_highchart_total_sub()$`Total savings`, #make this interactive from the side boxes
                       color = kt_colors[8], #purple
-                      borderWidth = 0,
-                      pointWidth = 58,
-                      pointPlacement = -0.4,
+                      # Shared width logic
+                      pointPadding = 0,
+                      groupPadding = 0.2,
+                      maxPointWidth = 120,
+                      pointPlacement = 0,
                       #position = list(offsetY = -25),
                       stack = "Main",
                       zIndex = 2
@@ -611,7 +653,9 @@ server <- function(input, output, session) {
         #line component value sub-group
         hc_add_series(data = cht_series_sub, #make this interactive from the side boxes
                       type = "line",
-                      name = paste0(selected_metric(),":<br>", unique(data_highchart_aspect_sub()$group)), #make this interactive from the side boxes
+                      name = ifelse(str_detect(selected_metric(),"Dummy"), 
+                                    "",  
+                                    paste0(selected_metric(),":<br>", unique(data_highchart_aspect_sub()$group))), #make this interactive from the side boxes
                       color = kt_colors[4],
                       
                       zIndex = 51,
